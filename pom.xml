@@ -3,7 +3,11 @@
 
     DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
+<<<<<<< HEAD
     Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
+=======
+    Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
 
     The contents of this file are subject to the terms of either the GNU
     General Public License Version 2 only ("GPL") or the Common Development
@@ -47,12 +51,17 @@
     <parent>
         <groupId>net.java</groupId>
         <artifactId>jvnet-parent</artifactId>
+<<<<<<< HEAD
         <version>1</version>
+=======
+        <version>3</version>
+>>>>>>> bb70d17 ( v2)
     </parent>
 
     <groupId>javax.servlet</groupId>
     <artifactId>javax.servlet-api</artifactId>
     <packaging>jar</packaging>
+<<<<<<< HEAD
     <version>3.0.1</version>
 
     <properties>
@@ -64,6 +73,23 @@
         <findbugs.version>2.3.1</findbugs.version>
         <findbugs.exclude />
         <findbugs.threshold>High</findbugs.threshold>
+=======
+    <version>3.1.0</version>
+
+    <properties>
+        <spec.version>3.1</spec.version>
+        <extension.name>javax.servlet</extension.name>
+        <bundle.symbolicName>javax.servlet-api</bundle.symbolicName>
+        <bundle.version>3.1.0</bundle.version>
+        <window.title>Java Servlet 3.1</window.title>
+        <doc.title>Java Servlet 3.1 API Specification</doc.title>
+        <vendor.name>Oracle Corporation</vendor.name>
+        <implementation.vendor.id>org.glassfish</implementation.vendor.id>
+        <findbugs.version>2.3.1</findbugs.version>
+        <findbugs.exclude>exclude.xml</findbugs.exclude>
+        <findbugs.threshold>Low</findbugs.threshold>
+        <copyright-plugin.version>1.33</copyright-plugin.version>
+>>>>>>> bb70d17 ( v2)
     </properties>
     <name>Java Servlet API</name>
     
@@ -114,18 +140,31 @@
         </mailingList>
     </mailingLists>
     <scm>
+<<<<<<< HEAD
         <connection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/tags/javax.servlet-api-3.0.1</connection>
         <developerConnection>scm:svn:svn+ssh://janey@svn.java.net/glassfish~svn/tags/javax.servlet-api-3.0.1</developerConnection>
         <url>https://svn.java.net/svn/glassfish~svn/tags/javax.servlet-api-3.0.1</url>
+=======
+        <connection>scm:svn:https://svn.java.net/svn/glassfish~svn/tags/javax.servlet-api-3.1.0</connection>
+        <developerConnection>scm:svn:https://svn.java.net/svn/glassfish~svn/tags/javax.servlet-api-3.1.0</developerConnection>
+        <url>http://java.net/projects/glassfish/sources/svn/show/tags/javax.servlet-api-3.1.0</url>
+>>>>>>> bb70d17 ( v2)
     </scm>
 
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+<<<<<<< HEAD
                 <configuration>
                     <source>1.5</source>
                     <target>1.5</target>
+=======
+                <version>2.0.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+>>>>>>> bb70d17 ( v2)
                     <compilerArgument>-Xlint:unchecked</compilerArgument>
                 </configuration>
             </plugin>
@@ -138,9 +177,23 @@
                         <supportedProjectType>jar</supportedProjectType>
                     </supportedProjectTypes>
                     <instructions>
+<<<<<<< HEAD
                         <Export-Package>${extension.name}.*; version=${spec.version}</Export-Package>
                         <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
                         <_include>-osgi.bundle</_include>
+=======
+                        <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
+                        <Bundle-Description>
+                            Java(TM) Servlet ${spec.version} API Design Specification
+                        </Bundle-Description>
+                        <Bundle-Version>${bundle.version}</Bundle-Version>
+                        <Extension-Name>${extension.name}</Extension-Name>
+                        <Specification-Version>${spec.version}</Specification-Version>
+                        <Specification-Vendor>${vendor.name}</Specification-Vendor>
+                        <Implementation-Version>${project.version}</Implementation-Version>
+                        <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+                        <Implementation-Vendor-Id>${implementation.vendor.id}</Implementation-Vendor-Id>
+>>>>>>> bb70d17 ( v2)
                     </instructions>
                 </configuration>
                 <executions>
@@ -152,6 +205,7 @@
                         </goals>
                     </execution>
                 </executions>
+<<<<<<< HEAD
              </plugin>
              <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -172,6 +226,21 @@
                         </manifestEntries>
                     </archive>
                 </configuration>    
+=======
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                    <excludes>
+                        <exclude>**/*.java</exclude>
+                    </excludes>
+                </configuration>
+>>>>>>> bb70d17 ( v2)
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -209,6 +278,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+<<<<<<< HEAD
                 <executions>
                     <execution>
                         <phase>javadoc</phase>
@@ -224,6 +294,35 @@
                             </groups>
                             <bottom>Portions Copyright &amp;copy; 1999-2002 The Apache Software Foundation.  All Rights Reserved. Portions Copyright &amp;copy; 2005-2011 Oracle and/or its affiliates.  All Rights Reserve</bottom>
                         </configuration>
+=======
+                <version>2.8</version>
+                <configuration>
+                    <sourcepath>src</sourcepath>
+                    <doctitle>${doc.title}</doctitle>
+                    <windowtitle>${window.title}</windowtitle>
+                    <groups>
+                        <group>
+                            <title>Servlet API Documentation</title>
+                            <packages>javax.servlet</packages>
+                        </group>
+                    </groups>
+                    <bottom>
+<![CDATA[Copyright &#169; 1999-2013,
+    <a href="http://www.oracle.com">Oracle</a>
+    and/or its affiliates. All Rights Reserved.
+    Use is subject to
+    <a href="{@docRoot}/doc-files/speclicense.html" target="_top">license terms</a>.
+    Portions Copyright &#169; 1999-2002 The Apache Software Foundation.
+]]>
+                    </bottom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+>>>>>>> bb70d17 ( v2)
                     </execution>
                 </executions>
             </plugin>     
@@ -247,6 +346,19 @@
                     <arguments>${release.arguments}</arguments>
                 </configuration>
             </plugin>
+<<<<<<< HEAD
+=======
+            <plugin>
+                <groupId>org.glassfish.copyright</groupId>
+                <artifactId>glassfish-copyright-maven-plugin</artifactId>
+                <version>${copyright-plugin.version}</version>
+                <configuration>
+                    <excludeFile>
+                        ${basedir}/copyright-exclude
+                    </excludeFile>
+                </configuration>
+            </plugin>
+>>>>>>> bb70d17 ( v2)
         </plugins>
         <resources>
             <resource>
@@ -290,6 +402,9 @@
             </snapshots>
         </repository>
     </repositories>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> bb70d17 ( v2)
 </project>

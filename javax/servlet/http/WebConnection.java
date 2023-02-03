@@ -1,11 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
-<<<<<<< HEAD
- * Copyright (c) 2008-2010 Oracle and/or its affiliates. All rights reserved.
-=======
- * Copyright (c) 2008-2013 Oracle and/or its affiliates. All rights reserved.
->>>>>>> bb70d17 ( v2)
+ * Copyright (c) 2012-2013 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -42,42 +38,36 @@
  * holder.
  */
 
-package javax.servlet.annotation;
+package javax.servlet.http;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.io.IOException;
+import javax.servlet.ServletInputStream;
+import javax.servlet.ServletOutputStream;
 
 /**
- * This annotation is used to declare a WebListener.
+ * This interface encapsulates the connection for an upgrade request.
+ * It allows the protocol handler to send service requests and status
+ * queries to the container.
  *
- * Any class annotated with WebListener must implement one or more of
- * the {@link javax.servlet.ServletContextListener}, 
- * {@link javax.servlet.ServletContextAttributeListener},
- * {@link javax.servlet.ServletRequestListener},
- * {@link javax.servlet.ServletRequestAttributeListener}, 
- * {@link javax.servlet.http.HttpSessionListener}, or
-<<<<<<< HEAD
- * {@link javax.servlet.http.HttpSessionAttributeListener} interfaces.
-=======
- * {@link javax.servlet.http.HttpSessionAttributeListener}, or
- * {@link javax.servlet.http.HttpSessionIdListener} interfaces.
->>>>>>> bb70d17 ( v2)
- * 
- * @since Servlet 3.0
+ * @since Servlet 3.1
  */
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface WebListener {
+
+public interface WebConnection extends AutoCloseable {
     /**
-     * Description of the listener
+     * Returns an input stream for this web connection.
+     *
+     * @return a ServletInputStream for reading binary data
+     *
+     * @exception IOException if an I/O error occurs
      */
-    String value() default "";
+    public ServletInputStream getInputStream() throws IOException;
+
+    /**
+     * Returns an output stream for this web connection.
+     *
+     * @return a ServletOutputStream for writing binary data
+     *
+     * @exception IOException if an I/O error occurs
+     */
+    public ServletOutputStream getOutputStream() throws IOException;
 }
-<<<<<<< HEAD
-    
-=======
->>>>>>> bb70d17 ( v2)

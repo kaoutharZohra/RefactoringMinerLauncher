@@ -1,11 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
-<<<<<<< HEAD
- * Copyright (c) 2008-2010 Oracle and/or its affiliates. All rights reserved.
-=======
- * Copyright (c) 2008-2013 Oracle and/or its affiliates. All rights reserved.
->>>>>>> bb70d17 ( v2)
+ * Copyright (c) 2011-2013 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -42,42 +38,45 @@
  * holder.
  */
 
-package javax.servlet.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package javax.servlet;
+
+import java.io.IOException;
+import java.util.EventListener;
 
 /**
- * This annotation is used to declare a WebListener.
+ * <p>
+ * This class represents a call-back mechanism that will notify implementations
+ * as HTTP request data becomes available to be read without blocking.
+ * </p>
  *
- * Any class annotated with WebListener must implement one or more of
- * the {@link javax.servlet.ServletContextListener}, 
- * {@link javax.servlet.ServletContextAttributeListener},
- * {@link javax.servlet.ServletRequestListener},
- * {@link javax.servlet.ServletRequestAttributeListener}, 
- * {@link javax.servlet.http.HttpSessionListener}, or
-<<<<<<< HEAD
- * {@link javax.servlet.http.HttpSessionAttributeListener} interfaces.
-=======
- * {@link javax.servlet.http.HttpSessionAttributeListener}, or
- * {@link javax.servlet.http.HttpSessionIdListener} interfaces.
->>>>>>> bb70d17 ( v2)
- * 
- * @since Servlet 3.0
+ * @since Servlet 3.1
  */
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface WebListener {
+public interface ReadListener extends EventListener {
+
     /**
-     * Description of the listener
+     * When an instance of the <code>ReadListener</code> is registered with a {@link ServletInputStream},
+     * this method will be invoked by the container the first time when it is possible
+     * to read data. Subsequently the container will invoke this method if and only
+     * if {@link javax.servlet.ServletInputStream#isReady()} method
+     * has been called and has returned <code>false</code>.
+     *
+     * @throws IOException if an I/O related error has occurred during processing
      */
-    String value() default "";
+    public void onDataAvailable() throws IOException;
+
+    /**
+     * Invoked when all data for the current request has been read.
+     *
+     * @throws IOException if an I/O related error has occurred during processing
+     */
+
+    public void onAllDataRead() throws IOException;
+
+    /**
+     * Invoked when an error occurs processing the request.
+     */
+    public void onError(Throwable t);
+
+
 }
-<<<<<<< HEAD
-    
-=======
->>>>>>> bb70d17 ( v2)

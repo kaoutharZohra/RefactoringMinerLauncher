@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -124,7 +128,10 @@ public abstract class ServletInputStream extends InputStream {
      * @exception IOException	if an input or output exception has occurred
      *
      */
+<<<<<<< HEAD
      
+=======
+>>>>>>> bb70d17 ( v2)
     public int readLine(byte[] b, int off, int len) throws IOException {
 
 	if (len <= 0) {
@@ -141,6 +148,52 @@ public abstract class ServletInputStream extends InputStream {
 	}
 	return count > 0 ? count : -1;
     }
+<<<<<<< HEAD
+=======
+
+
+    /**
+     * Returns true when all the data from the stream has been read else
+     * it returns false.
+     *
+     * @return <code>true</code> when all data for this particular request
+     *  has been read, otherwise returns <code>false</code>.
+     *
+     * @since Servlet 3.1
+     */
+    public abstract boolean isFinished();
+
+    /**
+     * Returns true if data can be read without blocking else returns
+     * false.
+     *
+     * @return <code>true</code> if data can be obtained without blocking,
+     *  otherwise returns <code>false</code>.
+     *
+     * @since Servlet 3.1
+     */
+    public abstract boolean isReady();
+
+    /**
+     * Instructs the <code>ServletInputStream</code> to invoke the provided
+     * {@link ReadListener} when it is possible to read
+     *
+     * @param readListener the {@link ReadListener} that should be notified
+     *  when it's possible to read.
+     *
+     * @exception IllegalStateException if one of the following conditions is true
+     * <ul>
+     * <li>the associated request is neither upgraded nor the async started
+     * <li>setReadListener is called more than once within the scope of the same request.
+     * </ul>
+     *
+     * @throws NullPointerException if readListener is null
+     *
+     * @since Servlet 3.1
+
+     */
+    public abstract void setReadListener(ReadListener readListener);
+>>>>>>> bb70d17 ( v2)
 }
 
 

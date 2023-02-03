@@ -1,11 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
-<<<<<<< HEAD
- * Copyright (c) 2008-2010 Oracle and/or its affiliates. All rights reserved.
-=======
- * Copyright (c) 2008-2013 Oracle and/or its affiliates. All rights reserved.
->>>>>>> bb70d17 ( v2)
+ * Copyright (c) 2012 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -42,42 +38,27 @@
  * holder.
  */
 
-package javax.servlet.annotation;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package javax.servlet.http;
 
 /**
- * This annotation is used to declare a WebListener.
+ * This interface encapsulates the upgrade protocol processing.
+ * A HttpUpgradeHandler implementation would allow the servlet container
+ * to communicate with it.
  *
- * Any class annotated with WebListener must implement one or more of
- * the {@link javax.servlet.ServletContextListener}, 
- * {@link javax.servlet.ServletContextAttributeListener},
- * {@link javax.servlet.ServletRequestListener},
- * {@link javax.servlet.ServletRequestAttributeListener}, 
- * {@link javax.servlet.http.HttpSessionListener}, or
-<<<<<<< HEAD
- * {@link javax.servlet.http.HttpSessionAttributeListener} interfaces.
-=======
- * {@link javax.servlet.http.HttpSessionAttributeListener}, or
- * {@link javax.servlet.http.HttpSessionIdListener} interfaces.
->>>>>>> bb70d17 ( v2)
- * 
- * @since Servlet 3.0
+ * @since Servlet 3.1
  */
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface WebListener {
+
+public interface HttpUpgradeHandler {
     /**
-     * Description of the listener
+     * It is called once the HTTP Upgrade process has been completed and
+     * the upgraded connection is ready to start using the new protocol.
+     *
+     * @param wc the WebConnection object associated to this upgrade request
      */
-    String value() default "";
+    public void init(WebConnection wc);
+
+    /**
+     * It is called when the client is disconnected.
+     */
+    public void destroy();
 }
-<<<<<<< HEAD
-    
-=======
->>>>>>> bb70d17 ( v2)

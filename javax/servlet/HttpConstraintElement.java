@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 2008-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 2008-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -105,7 +109,11 @@ public class HttpConstraintElement {
         }
         this.emptyRoleSemantic = semantic;
         this.transportGuarantee = guarantee;
+<<<<<<< HEAD
         this.rolesAllowed = roleNames;
+=======
+        this.rolesAllowed = copyStrings(roleNames);
+>>>>>>> bb70d17 ( v2)
     }
 
     /**
@@ -154,6 +162,23 @@ public class HttpConstraintElement {
      * {@link #getEmptyRoleSemantic}).
      */
     public String[] getRolesAllowed() {
+<<<<<<< HEAD
         return this.rolesAllowed;
+=======
+        return copyStrings(this.rolesAllowed);
+    }
+
+    private String[] copyStrings(String[] strings) {
+        String[] arr = null;
+        if (strings != null) {
+            int len = strings.length;
+            arr = new String[len];
+            if (len > 0) {
+                System.arraycopy(strings, 0, arr, 0, len);
+            }
+        }
+
+        return ((arr != null) ? arr : new String[0]);
+>>>>>>> bb70d17 ( v2)
     }
 }

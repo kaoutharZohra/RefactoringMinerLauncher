@@ -1,6 +1,11 @@
 Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Created-By: Apache Maven
+<<<<<<< HEAD
 Built-By: java_re
 Build-Jdk: 1.6.0_11
+=======
+Built-By: shichan
+Build-Jdk: 1.7.0_13
+>>>>>>> bb70d17 ( v2)
 

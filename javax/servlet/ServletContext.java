@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -123,9 +127,17 @@ public interface ServletContext {
      *
      * <p>The context path is the portion of the request URI that is used
      * to select the context of the request. The context path always comes
+<<<<<<< HEAD
      * first in a request URI. The path starts with a <tt>/</tt> character
      * but does not end with a <tt>/</tt> character. For servlets in the
      * default (root) context, this method returns "".
+=======
+     * first in a request URI. If this context is the “default” context
+     * rooted at the base of the Web server’s URL name space, this path
+     * will be an empty string. Otherwise, if the context is not rooted at
+     * the root of the server’s name space, the path starts with a /
+     * character but does not end with a / character.
+>>>>>>> bb70d17 ( v2)
      *
      * <p>It is possible that a servlet container may match a context by
      * more than one context path. In such cases the
@@ -773,6 +785,12 @@ public interface ServletContext {
      * @throws IllegalStateException if this ServletContext has already
      * been initialized
      *
+<<<<<<< HEAD
+=======
+     * @throws IllegalArgumentException if <code>servletName</code> is null
+     * or an empty String
+     *
+>>>>>>> bb70d17 ( v2)
      * @throws UnsupportedOperationException if this ServletContext was
      * passed to the {@link ServletContextListener#contextInitialized} method
      * of a {@link ServletContextListener} that was neither declared in
@@ -817,7 +835,12 @@ public interface ServletContext {
      * with {@link javax.servlet.annotation.WebListener}
      *
      * @throws IllegalArgumentException if the given servlet instance 
+<<<<<<< HEAD
      * implements {@link SingleThreadModel}
+=======
+     * implements {@link SingleThreadModel}, or <code>servletName</code> is null
+     * or an empty String
+>>>>>>> bb70d17 ( v2)
      *
      * @since Servlet 3.0
      */
@@ -859,6 +882,12 @@ public interface ServletContext {
      * @throws IllegalStateException if this ServletContext has already
      * been initialized
      *
+<<<<<<< HEAD
+=======
+     * @throws IllegalArgumentException if <code>servletName</code> is null
+     * or an empty String
+     *
+>>>>>>> bb70d17 ( v2)
      * @throws UnsupportedOperationException if this ServletContext was
      * passed to the {@link ServletContextListener#contextInitialized} method
      * of a {@link ServletContextListener} that was neither declared in
@@ -989,6 +1018,12 @@ public interface ServletContext {
      * @throws IllegalStateException if this ServletContext has already
      * been initialized
      *
+<<<<<<< HEAD
+=======
+     * @throws IllegalArgumentException if <code>filterName</code> is null or
+     * an empty String
+     *
+>>>>>>> bb70d17 ( v2)
      * @throws UnsupportedOperationException if this ServletContext was
      * passed to the {@link ServletContextListener#contextInitialized} method
      * of a {@link ServletContextListener} that was neither declared in
@@ -1026,6 +1061,12 @@ public interface ServletContext {
      * @throws IllegalStateException if this ServletContext has already
      * been initialized
      *
+<<<<<<< HEAD
+=======
+     * @throws IllegalArgumentException if <code>filterName</code> is null or
+     * an empty String
+     *
+>>>>>>> bb70d17 ( v2)
      * @throws UnsupportedOperationException if this ServletContext was
      * passed to the {@link ServletContextListener#contextInitialized} method
      * of a {@link ServletContextListener} that was neither declared in
@@ -1067,6 +1108,12 @@ public interface ServletContext {
      * @throws IllegalStateException if this ServletContext has already
      * been initialized
      *
+<<<<<<< HEAD
+=======
+     * @throws IllegalArgumentException if <code>filterName</code> is null or
+     * an empty String
+     *
+>>>>>>> bb70d17 ( v2)
      * @throws UnsupportedOperationException if this ServletContext was
      * passed to the {@link ServletContextListener#contextInitialized} method
      * of a {@link ServletContextListener} that was neither declared in
@@ -1268,8 +1315,14 @@ public interface ServletContext {
      * <li>{@link ServletContextAttributeListener}</tt>
      * <li>{@link ServletRequestListener}</tt>
      * <li>{@link ServletRequestAttributeListener}</tt>
+<<<<<<< HEAD
      * <li>{@link javax.servlet.http.HttpSessionListener}</tt>
      * <li>{@link javax.servlet.http.HttpSessionAttributeListener}</tt>
+=======
+     * <li>{@link javax.servlet.http.HttpSessionAttributeListener}</tt>
+     * <li>{@link javax.servlet.http.HttpSessionIdListener}</tt>
+     * <li>{@link javax.servlet.http.HttpSessionListener}</tt>
+>>>>>>> bb70d17 ( v2)
      * </ul>
      *
      * <p>If this ServletContext was passed to 
@@ -1324,8 +1377,14 @@ public interface ServletContext {
      * <li>{@link ServletContextAttributeListener}</tt>
      * <li>{@link ServletRequestListener}</tt>
      * <li>{@link ServletRequestAttributeListener}</tt>
+<<<<<<< HEAD
      * <li>{@link javax.servlet.http.HttpSessionListener}</tt>
      * <li>{@link javax.servlet.http.HttpSessionAttributeListener}</tt>
+=======
+     * <li>{@link javax.servlet.http.HttpSessionAttributeListener}</tt>
+     * <li>{@link javax.servlet.http.HttpSessionIdListener}</tt>
+     * <li>{@link javax.servlet.http.HttpSessionListener}</tt>
+>>>>>>> bb70d17 ( v2)
      * </ul>
      *
      * <p>If this ServletContext was passed to 
@@ -1371,8 +1430,14 @@ public interface ServletContext {
      * <li>{@link ServletContextAttributeListener}</tt>
      * <li>{@link ServletRequestListener}</tt>
      * <li>{@link ServletRequestAttributeListener}</tt>
+<<<<<<< HEAD
      * <li>{@link javax.servlet.http.HttpSessionListener}</tt>
      * <li>{@link javax.servlet.http.HttpSessionAttributeListener}</tt>
+=======
+     * <li>{@link javax.servlet.http.HttpSessionAttributeListener}</tt>
+     * <li>{@link javax.servlet.http.HttpSessionIdListener}</tt>
+     * <li>{@link javax.servlet.http.HttpSessionListener}</tt>
+>>>>>>> bb70d17 ( v2)
      * </ul>
      *
      * <p>If this ServletContext was passed to 
@@ -1423,8 +1488,14 @@ public interface ServletContext {
      * <code>{@link ServletContextAttributeListener}</code>,
      * <code>{@link ServletRequestListener}</code>,
      * <code>{@link ServletRequestAttributeListener}</code>,
+<<<<<<< HEAD
      * <code>{@link javax.servlet.http.HttpSessionListener}</code>, or
      * <code>{@link javax.servlet.http.HttpSessionAttributeListener}</code>
+=======
+     * <code>{@link javax.servlet.http.HttpSessionAttributeListener}</code>
+     * <code>{@link javax.servlet.http.HttpSessionIdListener}</code>, or
+     * <code>{@link javax.servlet.http.HttpSessionListener}</code>, or
+>>>>>>> bb70d17 ( v2)
      * interfaces.
      *
      * <p>The returned EventListener instance may be further customized
@@ -1458,8 +1529,14 @@ public interface ServletContext {
      * <code>{@link ServletContextAttributeListener}</code>,
      * <code>{@link ServletRequestListener}</code>,
      * <code>{@link ServletRequestAttributeListener}</code>,
+<<<<<<< HEAD
      * <code>{@link javax.servlet.http.HttpSessionListener}</code>, or
      * <code>{@link javax.servlet.http.HttpSessionAttributeListener}</code>
+=======
+     * <code>{@link javax.servlet.http.HttpSessionAttributeListener}</code>
+     * <code>{@link javax.servlet.http.HttpSessionIdListener}</code>, or
+     * <code>{@link javax.servlet.http.HttpSessionListener}</code>, or
+>>>>>>> bb70d17 ( v2)
      * interfaces.
      *
      * @since Servlet 3.0
@@ -1547,6 +1624,36 @@ public interface ServletContext {
      * @since Servlet 3.0
      */
     public void declareRoles(String... roleNames);
+<<<<<<< HEAD
 }
 
 
+=======
+
+
+    /**
+     * Returns the configuration name of the logical host on which the
+     * ServletContext is deployed.
+     *
+     * Servlet containers may support multiple logical hosts. This method must
+     * return the same name for all the servlet contexts deployed on a logical
+     * host, and the name returned by this method must be distinct, stable per
+     * logical host, and suitable for use in associating server configuration
+     * information with the logical host. The returned value is NOT expected
+     * or required to be equivalent to a network address or hostname of the
+     * logical host.
+     *
+     * @return a <code>String</code> containing the configuration name of the
+     * logical host on which the servlet context is deployed.
+     *
+     * @throws UnsupportedOperationException if this ServletContext was
+     * passed to the {@link ServletContextListener#contextInitialized} method
+     * of a {@link ServletContextListener} that was neither declared in
+     * <code>web.xml</code> or <code>web-fragment.xml</code>, nor annotated
+     * with {@link javax.servlet.annotation.WebListener}
+     *
+     * @since Servlet 3.1
+     */
+    public String getVirtualServerName();
+}
+>>>>>>> bb70d17 ( v2)

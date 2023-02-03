@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2012 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -157,6 +161,19 @@ public class ServletRequestWrapper implements ServletRequest {
         return this.request.getContentLength();
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * The default behavior of this method is to return getContentLengthLong()
+     * on the wrapped request object.
+     *
+     * @since Servlet 3.1
+     */
+    public long getContentLengthLong() {
+        return this.request.getContentLengthLong();
+    }
+
+>>>>>>> bb70d17 ( v2)
 
     /**
      * The default behavior of this method is to return getContentType()
@@ -546,7 +563,11 @@ public class ServletRequestWrapper implements ServletRequest {
      *
      * @since Servlet 3.0
      */
+<<<<<<< HEAD
     public boolean isWrapperFor(Class wrappedType) {
+=======
+    public boolean isWrapperFor(Class<?> wrappedType) {
+>>>>>>> bb70d17 ( v2)
         if (!ServletRequest.class.isAssignableFrom(wrappedType)) {
             throw new IllegalArgumentException("Given class " +
                 wrappedType.getName() + " not a subinterface of " +
@@ -575,5 +596,9 @@ public class ServletRequestWrapper implements ServletRequest {
         return request.getDispatcherType();
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb70d17 ( v2)
 }
 
