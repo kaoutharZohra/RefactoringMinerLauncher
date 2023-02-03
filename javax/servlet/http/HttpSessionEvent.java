@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -66,6 +70,11 @@ package javax.servlet.http;
  */
 public class HttpSessionEvent extends java.util.EventObject {
 
+<<<<<<< HEAD
+=======
+    private static final long serialVersionUID = -7622791603672342895L;
+
+>>>>>>> bb70d17 ( v2)
     /**
      * Construct a session event from the given source.
      */

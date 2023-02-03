@@ -1,11 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
-<<<<<<< HEAD
- * Copyright (c) 2008-2010 Oracle and/or its affiliates. All rights reserved.
-=======
- * Copyright (c) 2008-2013 Oracle and/or its affiliates. All rights reserved.
->>>>>>> bb70d17 ( v2)
+ * Copyright (c) 2011-2013 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -42,42 +38,35 @@
  * holder.
  */
 
-package javax.servlet.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+package javax.servlet;
+
+import java.io.IOException;
+import java.util.EventListener;
 
 /**
- * This annotation is used to declare a WebListener.
  *
- * Any class annotated with WebListener must implement one or more of
- * the {@link javax.servlet.ServletContextListener}, 
- * {@link javax.servlet.ServletContextAttributeListener},
- * {@link javax.servlet.ServletRequestListener},
- * {@link javax.servlet.ServletRequestAttributeListener}, 
- * {@link javax.servlet.http.HttpSessionListener}, or
-<<<<<<< HEAD
- * {@link javax.servlet.http.HttpSessionAttributeListener} interfaces.
-=======
- * {@link javax.servlet.http.HttpSessionAttributeListener}, or
- * {@link javax.servlet.http.HttpSessionIdListener} interfaces.
->>>>>>> bb70d17 ( v2)
- * 
- * @since Servlet 3.0
+ * Callback notification mechanism that signals to the developer it's possible
+ * to write content without blocking.
+ *
+ * @since Servlet 3.1
  */
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface WebListener {
+public interface WriteListener extends EventListener {
+
     /**
-     * Description of the listener
+     * When an instance of the WriteListener is registered with a {@link ServletOutputStream},
+     * this method will be invoked by the container the first time when it is possible
+     * to write data. Subsequently the container will invoke this method if and only
+     * if {@link javax.servlet.ServletOutputStream#isReady()} method
+     * has been called and has returned <code>false</code>.
+     *
+     * @throws IOException if an I/O related error has occurred during processing
      */
-    String value() default "";
+    public void onWritePossible() throws IOException;
+
+    /**
+     * Invoked when an error occurs writing data using the non-blocking APIs.
+     */
+    public void onError(final Throwable t);
+
 }
-<<<<<<< HEAD
-    
-=======
->>>>>>> bb70d17 ( v2)

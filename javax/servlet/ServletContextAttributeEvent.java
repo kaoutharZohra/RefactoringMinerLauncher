@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -69,6 +73,11 @@ package javax.servlet;
 
 public class ServletContextAttributeEvent extends ServletContextEvent { 
 
+<<<<<<< HEAD
+=======
+    private static final long serialVersionUID = -5804680734245618303L;
+
+>>>>>>> bb70d17 ( v2)
     private String name;
     private Object value;
 

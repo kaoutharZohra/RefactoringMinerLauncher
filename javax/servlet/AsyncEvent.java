@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -62,7 +66,11 @@ public class AsyncEvent {
      * @param context the AsyncContex to be delivered with this AsyncEvent
      */
     public AsyncEvent(AsyncContext context) {
+<<<<<<< HEAD
         this(context, null, null, null);
+=======
+        this(context, context.getRequest(), context.getResponse(), null);
+>>>>>>> bb70d17 ( v2)
     }
 
     /**
@@ -86,7 +94,11 @@ public class AsyncEvent {
      * @param throwable the Throwable to be delivered with this AsyncEvent
      */
     public AsyncEvent(AsyncContext context, Throwable throwable) {
+<<<<<<< HEAD
         this(context, null, null, throwable);
+=======
+        this(context, context.getRequest(), context.getResponse(), throwable);
+>>>>>>> bb70d17 ( v2)
     }
 
     /**

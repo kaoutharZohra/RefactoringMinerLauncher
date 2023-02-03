@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2012 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -160,7 +164,20 @@ public class ServletResponseWrapper implements ServletResponse {
     public void setContentLength(int len) {
 	this.response.setContentLength(len);
     }
+<<<<<<< HEAD
     
+=======
+
+    /**
+     * The default behavior of this method is to call setContentLengthLong(long len)
+     * on the wrapped response object.
+     */
+
+    public void setContentLengthLong(long len) {
+        this.response.setContentLengthLong(len);
+    }
+
+>>>>>>> bb70d17 ( v2)
     /**
      * The default behavior of this method is to call setContentType(String type)
      * on the wrapped response object.
@@ -287,7 +304,11 @@ public class ServletResponseWrapper implements ServletResponse {
      *
      * @since Servlet 3.0
      */
+<<<<<<< HEAD
     public boolean isWrapperFor(Class wrappedType) {
+=======
+    public boolean isWrapperFor(Class<?> wrappedType) {
+>>>>>>> bb70d17 ( v2)
         if (!ServletResponse.class.isAssignableFrom(wrappedType)) {
             throw new IllegalArgumentException("Given class " +
                 wrappedType.getName() + " not a subinterface of " +

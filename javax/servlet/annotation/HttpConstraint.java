@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 2008-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 2008-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -52,6 +56,19 @@ import javax.servlet.annotation.ServletSecurity.TransportGuarantee;
  * methods for which a corresponding {@link HttpMethodConstraint} element does
  * NOT occur within the {@link ServletSecurity} annotation.
  *
+<<<<<<< HEAD
+=======
+ * <p>For the special case where an <code>@HttpConstraint</code> that returns
+ * all default values occurs in combination with at least one
+ * {@link HttpMethodConstraint} that returns other than all default values, the
+ * <code>@HttpConstraint</code> represents that no security constraint is to be
+ * applied to any of the HTTP protocol methods to which a security constraint
+ * would otherwise apply. This exception is made to ensure that such
+ * potentially non-specific uses of <code>@HttpConstraint</code> do not yield
+ * constraints that will explicitly establish unprotected access for such
+ * methods; given that they would not otherwise be covered by a constraint.
+ *
+>>>>>>> bb70d17 ( v2)
  * @since Servlet 3.0
  */
 @Documented

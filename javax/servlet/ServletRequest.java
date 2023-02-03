@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -72,6 +76,7 @@ import java.util.*;
  * additional protocol-specific data (for example, HTTP data is
  * provided by {@link javax.servlet.http.HttpServletRequest}.
  * 
+<<<<<<< HEAD
  * @author 	Various
  *
  * @see 	javax.servlet.http.HttpServletRequest
@@ -82,6 +87,16 @@ public interface ServletRequest {
 
     /**
      *
+=======
+ * @author Various
+ *
+ * @see javax.servlet.http.HttpServletRequest
+ *
+ */
+public interface ServletRequest {
+
+    /**
+>>>>>>> bb70d17 ( v2)
      * Returns the value of the named attribute as an <code>Object</code>,
      * or <code>null</code> if no attribute of the given name exists. 
      *
@@ -98,6 +113,7 @@ public interface ServletRequest {
      * names. This specification reserves names matching <code>java.*</code>,
      * <code>javax.*</code>, and <code>sun.*</code>. 
      *
+<<<<<<< HEAD
      * @param name	a <code>String</code> specifying the name of 
      *			the attribute
      *
@@ -111,12 +127,22 @@ public interface ServletRequest {
     
     
 
+=======
+     * @param name a <code>String</code> specifying the name of the attribute
+     *
+     * @return an <code>Object</code> containing the value of the attribute,
+     * or <code>null</code> if the attribute does not exist
+     */
+    public Object getAttribute(String name);
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns an <code>Enumeration</code> containing the
      * names of the attributes available to this request. 
      * This method returns an empty <code>Enumeration</code>
      * if the request has no attributes available to it.
      * 
+<<<<<<< HEAD
      *
      * @return		an <code>Enumeration</code> of strings 
      *			containing the names 
@@ -129,11 +155,19 @@ public interface ServletRequest {
     
     
     
+=======
+     * @return an <code>Enumeration</code> of strings containing the names 
+     * of the request's attributes
+     */
+    public Enumeration<String> getAttributeNames();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the name of the character encoding used in the body of this
      * request. This method returns <code>null</code> if the request
      * does not specify a character encoding
      * 
+<<<<<<< HEAD
      *
      * @return		a <code>String</code> containing the name of 
      *			the character encoding, or <code>null</code>
@@ -144,11 +178,20 @@ public interface ServletRequest {
     public String getCharacterEncoding();
 
 
+=======
+     * @return a <code>String</code> containing the name of the character
+     * encoding, or <code>null</code> if the request does not specify a
+     * character encoding
+     */
+    public String getCharacterEncoding();
+
+>>>>>>> bb70d17 ( v2)
     /**
      * Overrides the name of the character encoding used in the body of this
      * request. This method must be called prior to reading request parameters
      * or reading input using getReader(). Otherwise, it has no effect.
      * 
+<<<<<<< HEAD
      * @param env      <code>String</code> containing the name of
      *                 the character encoding.
      * @throws         UnsupportedEncodingException if this
@@ -178,11 +221,46 @@ public interface ServletRequest {
     
     
 
+=======
+     * @param env <code>String</code> containing the name of
+     * the character encoding.
+     *
+     * @throws UnsupportedEncodingException if this ServletRequest is still
+     * in a state where a character encoding may be set,
+     * but the specified encoding is invalid
+     */
+    public void setCharacterEncoding(String env) throws UnsupportedEncodingException;
+
+    /**
+     * Returns the length, in bytes, of the request body and made available by
+     * the input stream, or -1 if the length is not known ir is greater than
+     * Integer.MAX_VALUE. For HTTP servlets,
+     * same as the value of the CGI variable CONTENT_LENGTH.
+     *
+     * @return an integer containing the length of the request body or -1 if
+     * the length is not known or is greater than Integer.MAX_VALUE.
+     */
+    public int getContentLength();
+    
+    /**
+     * Returns the length, in bytes, of the request body and made available by
+     * the input stream, or -1 if the length is not known. For HTTP servlets,
+     * same as the value of the CGI variable CONTENT_LENGTH.
+     *
+     * @return a long containing the length of the request body or -1L if
+     * the length is not known
+     *
+     * @since Servlet 3.1
+     */
+    public long getContentLengthLong();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the MIME type of the body of the request, or 
      * <code>null</code> if the type is not known. For HTTP servlets, 
      * same as the value of the CGI variable CONTENT_TYPE.
      *
+<<<<<<< HEAD
      * @return		a <code>String</code> containing the name 
      *			of the MIME type of 
      * 			the request, or null if the type is not known
@@ -192,13 +270,25 @@ public interface ServletRequest {
     public String getContentType();
     
     
+=======
+     * @return a <code>String</code> containing the name of the MIME type
+     * of the request, or null if the type is not known
+     */
+    public String getContentType();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Retrieves the body of the request as binary data using
      * a {@link ServletInputStream}.  Either this method or 
      * {@link #getReader} may be called to read the body, not both.
      *
+<<<<<<< HEAD
      * @return			a {@link ServletInputStream} object containing
      * 				the body of the request
+=======
+     * @return a {@link ServletInputStream} object containing
+     * the body of the request
+>>>>>>> bb70d17 ( v2)
      *
      * @exception IllegalStateException if the {@link #getReader} method
      * has already been called for this request
@@ -207,7 +297,10 @@ public interface ServletRequest {
      */
     public ServletInputStream getInputStream() throws IOException; 
      
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the value of a request parameter as a <code>String</code>,
      * or <code>null</code> if the parameter does not exist. Request parameters
@@ -227,6 +320,7 @@ public interface ServletRequest {
      * #getInputStream} or {@link #getReader} can interfere
      * with the execution of this method.
      *
+<<<<<<< HEAD
      * @param name 	a <code>String</code> specifying the 
      *			name of the parameter
      *
@@ -238,11 +332,23 @@ public interface ServletRequest {
     public String getParameter(String name);
     
     
+=======
+     * @param name a <code>String</code> specifying the name of the parameter
+     *
+     * @return a <code>String</code> representing the single value of
+     * the parameter
+     *
+     * @see #getParameterValues
+     */
+    public String getParameter(String name);
+    
+>>>>>>> bb70d17 ( v2)
     /**
      *
      * Returns an <code>Enumeration</code> of <code>String</code>
      * objects containing the names of the parameters contained
      * in this request. If the request has 
+<<<<<<< HEAD
      * no parameters, the method returns an 
      * empty <code>Enumeration</code>. 
      *
@@ -255,6 +361,17 @@ public interface ServletRequest {
     public Enumeration<String> getParameterNames();
         
 
+=======
+     * no parameters, the method returns an empty <code>Enumeration</code>. 
+     *
+     * @return an <code>Enumeration</code> of <code>String</code>
+     * objects, each <code>String</code> containing the name of
+     * a request parameter; or an empty <code>Enumeration</code>
+     * if the request has no parameters
+     */
+    public Enumeration<String> getParameterNames();
+        
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns an array of <code>String</code> objects containing 
      * all of the values the given request parameter has, or 
@@ -263,6 +380,7 @@ public interface ServletRequest {
      * <p>If the parameter has a single value, the array has a length
      * of 1.
      *
+<<<<<<< HEAD
      * @param name	a <code>String</code> containing the name of 
      *			the parameter whose value is requested
      *
@@ -274,6 +392,18 @@ public interface ServletRequest {
     public String[] getParameterValues(String name);
  
 
+=======
+     * @param name a <code>String</code> containing the name of 
+     * the parameter whose value is requested
+     *
+     * @return an array of <code>String</code> objects 
+     * containing the parameter's values
+     *
+     * @see #getParameter
+     */
+    public String[] getParameterValues(String name);
+ 
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns a java.util.Map of the parameters of this request.
      * 
@@ -288,7 +418,10 @@ public interface ServletRequest {
      */
     public Map<String, String[]> getParameterMap();
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the name and version of the protocol the request uses
      * in the form <i>protocol/majorVersion.minorVersion</i>, for 
@@ -296,12 +429,20 @@ public interface ServletRequest {
      * returned is the same as the value of the CGI variable 
      * <code>SERVER_PROTOCOL</code>.
      *
+<<<<<<< HEAD
      * @return		a <code>String</code> containing the protocol 
      *			name and version number
      */    
     public String getProtocol();
     
 
+=======
+     * @return a <code>String</code> containing the protocol 
+     * name and version number
+     */    
+    public String getProtocol();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the name of the scheme used to make this request, 
      * for example,
@@ -309,18 +450,27 @@ public interface ServletRequest {
      * Different schemes have different rules for constructing URLs,
      * as noted in RFC 1738.
      *
+<<<<<<< HEAD
      * @return		a <code>String</code> containing the name 
      *			of the scheme used to make this request
      */
     public String getScheme();
     
 
+=======
+     * @return a <code>String</code> containing the name 
+     * of the scheme used to make this request
+     */
+    public String getScheme();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the host name of the server to which the request was sent.
      * It is the value of the part before ":" in the <code>Host</code>
      * header value, if any, or the resolved server name, or the server IP
      * address.
      *
+<<<<<<< HEAD
      * @return		a <code>String</code> containing the name 
      *			of the server
      */
@@ -330,12 +480,19 @@ public interface ServletRequest {
     
     
 
+=======
+     * @return a <code>String</code> containing the name of the server
+     */
+    public String getServerName();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the port number to which the request was sent.
      * It is the value of the part after ":" in the <code>Host</code>
      * header value, if any, or the server port where the client connection
      * was accepted on.
      *
+<<<<<<< HEAD
      * @return		an integer specifying the port number
      *
      */
@@ -344,6 +501,12 @@ public interface ServletRequest {
     
     
     
+=======
+     * @return an integer specifying the port number
+     */
+    public int getServerPort();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Retrieves the body of the request as character data using
      * a <code>BufferedReader</code>.  The reader translates the character
@@ -351,6 +514,7 @@ public interface ServletRequest {
      * Either this method or {@link #getInputStream} may be called to read the
      * body, not both.
      * 
+<<<<<<< HEAD
      *
      * @return					a <code>BufferedReader</code>
      *						containing the body of the request	
@@ -373,12 +537,29 @@ public interface ServletRequest {
     
     
 
+=======
+     * @return a <code>BufferedReader</code> containing the body of the request 
+     *
+     * @exception UnsupportedEncodingException  if the character set encoding
+     * used is not supported and the text cannot be decoded
+     *
+     * @exception IllegalStateException if {@link #getInputStream} method
+     * has been called on this request
+     *
+     * @exception IOException if an input or output exception occurred
+     *
+     * @see #getInputStream
+     */
+    public BufferedReader getReader() throws IOException;
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the Internet Protocol (IP) address of the client 
      * or last proxy that sent the request.
      * For HTTP servlets, same as the value of the 
      * CGI variable <code>REMOTE_ADDR</code>.
      *
+<<<<<<< HEAD
      * @return		a <code>String</code> containing the 
      *			IP address of the client that sent the request
      *
@@ -389,6 +570,13 @@ public interface ServletRequest {
     
     
 
+=======
+     * @return a <code>String</code> containing the 
+     * IP address of the client that sent the request
+     */
+    public String getRemoteAddr();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the fully qualified name of the client
      * or the last proxy that sent the request.
@@ -397,6 +585,7 @@ public interface ServletRequest {
      * the IP address. For HTTP servlets, same as the value of the CGI variable 
      * <code>REMOTE_HOST</code>.
      *
+<<<<<<< HEAD
      * @return		a <code>String</code> containing the fully 
      *			qualified name of the client
      *
@@ -409,6 +598,14 @@ public interface ServletRequest {
 
     /**
      *
+=======
+     * @return a <code>String</code> containing the fully 
+     * qualified name of the client
+     */
+    public String getRemoteHost();
+    
+    /**
+>>>>>>> bb70d17 ( v2)
      * Stores an attribute in this request.
      * Attributes are reset between requests.  This method is most
      * often used in conjunction with {@link RequestDispatcher}.
@@ -424,6 +621,7 @@ public interface ServletRequest {
      * <code>RequestDispatcher</code>, the object set by this method
      * may not be correctly retrieved in the caller servlet.
      *
+<<<<<<< HEAD
      *
      * @param name			a <code>String</code> specifying 
      *					the name of the attribute
@@ -437,6 +635,16 @@ public interface ServletRequest {
     
     
 
+=======
+     * @param name a <code>String</code> specifying 
+     * the name of the attribute
+     *
+     * @param o the <code>Object</code> to be stored
+     *
+     */
+    public void setAttribute(String name, Object o);
+    
+>>>>>>> bb70d17 ( v2)
     /**
      *
      * Removes an attribute from this request.  This method is not
@@ -448,6 +656,7 @@ public interface ServletRequest {
      * <code>javax.*</code>, and <code>com.sun.*</code>, are
      * reserved for use by Sun Microsystems.
      *
+<<<<<<< HEAD
      *
      * @param name			a <code>String</code> specifying 
      *					the name of the attribute to remove
@@ -459,18 +668,32 @@ public interface ServletRequest {
     
     
 
+=======
+     * @param name a <code>String</code> specifying 
+     * the name of the attribute to remove
+     */
+    public void removeAttribute(String name);
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the preferred <code>Locale</code> that the client will 
      * accept content in, based on the Accept-Language header.
      * If the client request doesn't provide an Accept-Language header,
      * this method returns the default locale for the server.
      *
+<<<<<<< HEAD
      *
      * @return		the preferred <code>Locale</code> for the client
      */
     public Locale getLocale();
     
 
+=======
+     * @return the preferred <code>Locale</code> for the client
+     */
+    public Locale getLocale();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns an <code>Enumeration</code> of <code>Locale</code> objects
      * indicating, in decreasing order starting with the preferred locale, the
@@ -480,6 +703,7 @@ public interface ServletRequest {
      * this method returns an <code>Enumeration</code> containing one 
      * <code>Locale</code>, the default locale for the server.
      *
+<<<<<<< HEAD
      * @return		an <code>Enumeration</code> of preferred 
      *                  <code>Locale</code> objects for the client
      */
@@ -488,11 +712,19 @@ public interface ServletRequest {
     
     
 
+=======
+     * @return an <code>Enumeration</code> of preferred 
+     * <code>Locale</code> objects for the client
+     */
+    public Enumeration<Locale> getLocales();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      *
      * Returns a boolean indicating whether this request was made using a
      * secure channel, such as HTTPS.
      *
+<<<<<<< HEAD
      *
      * @return		a boolean indicating if the request was made using a
      *                  secure channel
@@ -504,6 +736,13 @@ public interface ServletRequest {
     
     
 
+=======
+     * @return a boolean indicating if the request was made using a
+     * secure channel
+     */
+    public boolean isSecure();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      *
      * Returns a {@link RequestDispatcher} object that acts as a wrapper for
@@ -522,6 +761,7 @@ public interface ServletRequest {
      * ServletContext#getRequestDispatcher} is that this method can take a
      * relative path.
      *
+<<<<<<< HEAD
      * @param path      a <code>String</code> specifying the pathname
      *                  to the resource. If it is relative, it must be
      *                  relative against the current servlet.
@@ -545,33 +785,71 @@ public interface ServletRequest {
     public String getRealPath(String path);
     
     
+=======
+     * @param path a <code>String</code> specifying the pathname
+     * to the resource. If it is relative, it must be
+     * relative against the current servlet.
+     *
+     * @return a <code>RequestDispatcher</code> object that acts as a
+     * wrapper for the resource at the specified path,
+     * or <code>null</code> if the servlet container cannot
+     * return a <code>RequestDispatcher</code>
+     *
+     * @see RequestDispatcher
+     * @see ServletContext#getRequestDispatcher
+     */
+    public RequestDispatcher getRequestDispatcher(String path);
+    
+    /**
+     * @deprecated  As of Version 2.1 of the Java Servlet API,
+     *    use {@link ServletContext#getRealPath} instead.
+     */
+    public String getRealPath(String path);
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the Internet Protocol (IP) source port of the client
      * or last proxy that sent the request.
      *
+<<<<<<< HEAD
      * @return	an integer specifying the port number
+=======
+     * @return an integer specifying the port number
+>>>>>>> bb70d17 ( v2)
      *
      * @since Servlet 2.4
      */    
     public int getRemotePort();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the host name of the Internet Protocol (IP) interface on
      * which the request was received.
      *
+<<<<<<< HEAD
      * @return	a <code>String</code> containing the host
      *		name of the IP on which the request was received.
+=======
+     * @return a <code>String</code> containing the host
+     *         name of the IP on which the request was received.
+>>>>>>> bb70d17 ( v2)
      *
      * @since Servlet 2.4
      */
     public String getLocalName();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the Internet Protocol (IP) address of the interface on
      * which the request  was received.
      *
+<<<<<<< HEAD
      * @return	a <code>String</code> containing the
      *		IP address on which the request was received. 
      *
@@ -581,6 +859,15 @@ public interface ServletRequest {
     public String getLocalAddr();
 
 
+=======
+     * @return a <code>String</code> containing the
+     * IP address on which the request was received. 
+     *
+     * @since Servlet 2.4
+     */       
+    public String getLocalAddr();
+
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the Internet Protocol (IP) port number of the interface
      * on which the request was received.
@@ -591,7 +878,10 @@ public interface ServletRequest {
      */
     public int getLocalPort();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Gets the servlet context to which this ServletRequest was last
      * dispatched.
@@ -603,7 +893,10 @@ public interface ServletRequest {
      */
     public ServletContext getServletContext();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Puts this request into asynchronous mode, and initializes its
      * {@link AsyncContext} with the original (unwrapped) ServletRequest
@@ -644,11 +937,19 @@ public interface ServletRequest {
      * within the scope of the same dispatch, or if the response has
      * already been closed
      *
+<<<<<<< HEAD
      * @since Servlet 3.0
      */
     public AsyncContext startAsync() throws IllegalStateException;
     
 
+=======
+     * @see AsyncContext#dispatch()
+     * @since Servlet 3.0
+     */
+    public AsyncContext startAsync() throws IllegalStateException;
+ 
+>>>>>>> bb70d17 ( v2)
     /**
      * Puts this request into asynchronous mode, and initializes its
      * {@link AsyncContext} with the given request and response objects.
@@ -717,8 +1018,12 @@ public interface ServletRequest {
     public AsyncContext startAsync(ServletRequest servletRequest,
                                    ServletResponse servletResponse)
             throws IllegalStateException;
+<<<<<<< HEAD
 
 
+=======
+   
+>>>>>>> bb70d17 ( v2)
     /**
      * Checks if this request has been put into asynchronous mode.
      *
@@ -738,7 +1043,10 @@ public interface ServletRequest {
      */
     public boolean isAsyncStarted();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Checks if this request supports asynchronous operation.
      *
@@ -754,7 +1062,10 @@ public interface ServletRequest {
      */
     public boolean isAsyncSupported();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Gets the AsyncContext that was created or reinitialized by the
      * most recent invocation of {@link #startAsync} or
@@ -773,7 +1084,10 @@ public interface ServletRequest {
      */
     public AsyncContext getAsyncContext();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Gets the dispatcher type of this request.
      *
@@ -806,5 +1120,9 @@ public interface ServletRequest {
      * @since Servlet 3.0
      */
     public DispatcherType getDispatcherType();
+<<<<<<< HEAD
+=======
+
+>>>>>>> bb70d17 ( v2)
 }
 

@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2012 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -93,6 +97,7 @@ import java.util.Locale;
  * and HTTP define profiles of MIME, and those standards
  * are still evolving.
  *
+<<<<<<< HEAD
  * @author 	Various
  *
  * @see		ServletOutputStream
@@ -102,6 +107,14 @@ import java.util.Locale;
 public interface ServletResponse {
 
 
+=======
+ * @author Various
+ *
+ * @see ServletOutputStream
+ */
+ 
+public interface ServletResponse {
+>>>>>>> bb70d17 ( v2)
     
     /**
      * Returns the name of the character encoding (MIME charset)
@@ -118,6 +131,7 @@ public interface ServletResponse {
      * <p>See RFC 2047 (http://www.ietf.org/rfc/rfc2047.txt)
      * for more information about character encoding and MIME.
      *
+<<<<<<< HEAD
      * @return		a <code>String</code> specifying the
      *			name of the character encoding, for
      *			example, <code>UTF-8</code>
@@ -128,6 +142,13 @@ public interface ServletResponse {
     
     
 
+=======
+     * @return a <code>String</code> specifying the name of
+     * the character encoding, for example, <code>UTF-8</code>
+     */
+    public String getCharacterEncoding();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the content type used for the MIME body
      * sent in this response. The content type proper must
@@ -142,6 +163,7 @@ public interface ServletResponse {
      * If no character encoding has been specified, the
      * charset parameter is omitted.
      *
+<<<<<<< HEAD
      * @return		a <code>String</code> specifying the
      *			content type, for example,
      *			<code>text/html; charset=UTF-8</code>,
@@ -150,6 +172,13 @@ public interface ServletResponse {
      * @since Servlet 2.4
      */
   
+=======
+     * @return a <code>String</code> specifying the content type,
+     * for example, <code>text/html; charset=UTF-8</code>, or null
+     *
+     * @since Servlet 2.4
+     */
+>>>>>>> bb70d17 ( v2)
     public String getContentType();
     
     
@@ -158,6 +187,7 @@ public interface ServletResponse {
      * Returns a {@link ServletOutputStream} suitable for writing binary 
      * data in the response. The servlet container does not encode the
      * binary data.  
+<<<<<<< HEAD
      
      * <p> Calling flush() on the ServletOutputStream commits the response.
      
@@ -179,6 +209,27 @@ public interface ServletResponse {
     
     
 
+=======
+     *
+     * <p> Calling flush() on the ServletOutputStream commits the response.
+     *
+     * Either this method or {@link #getWriter} may 
+     * be called to write the body, not both, except when {@link #reset}
+     * has been called.
+     *
+     * @return a {@link ServletOutputStream} for writing binary data 
+     *
+     * @exception IllegalStateException if the <code>getWriter</code> method
+     * has been called on this response
+     *
+     * @exception IOException if an input or output exception occurred
+     *
+     * @see #getWriter
+     * @see #reset
+     */
+    public ServletOutputStream getOutputStream() throws IOException;
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns a <code>PrintWriter</code> object that
      * can send character text to the client.
@@ -192,6 +243,7 @@ public interface ServletResponse {
      * <p>Calling flush() on the <code>PrintWriter</code>
      * commits the response.
      * <p>Either this method or {@link #getOutputStream} may be called
+<<<<<<< HEAD
      * to write the body, not both.
      *
      * 
@@ -220,6 +272,31 @@ public interface ServletResponse {
     
     
     
+=======
+     * to write the body, not both, except when {@link #reset}
+     * has been called.
+     * 
+     * @return a <code>PrintWriter</code> object that 
+     * can return character data to the client 
+     *
+     * @exception java.io.UnsupportedEncodingException
+     * if the character encoding returned
+     * by <code>getCharacterEncoding</code> cannot be used
+     *
+     * @exception IllegalStateException
+     * if the <code>getOutputStream</code>
+     * method has already been called for this response object
+     *
+     * @exception IOException
+     * if an input or output exception occurred
+     *
+     * @see #getOutputStream
+     * @see #setCharacterEncoding
+     * @see #reset
+     */
+    public PrintWriter getWriter() throws IOException;
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Sets the character encoding (MIME charset) of the response
      * being sent to the client, for example, to UTF-8.
@@ -246,6 +323,7 @@ public interface ServletResponse {
      * specify a content type; however, it is still used to encode text
      * written via the servlet response's writer.
      *
+<<<<<<< HEAD
      * @param charset 	a String specifying only the character set
      * 			defined by IANA Character Sets
      *			(http://www.iana.org/assignments/character-sets)
@@ -262,10 +340,24 @@ public interface ServletResponse {
     
 
 
+=======
+     * @param charset a String specifying only the character set
+     * defined by IANA Character Sets
+     * (http://www.iana.org/assignments/character-sets)
+     *
+     * @see #setContentType
+     * @see #setLocale
+     *
+     * @since Servlet 2.4
+     */
+    public void setCharacterEncoding(String charset);
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Sets the length of the content body in the response
      * In HTTP servlets, this method sets the HTTP Content-Length header.
      *
+<<<<<<< HEAD
      *
      * @param len 	an integer specifying the length of the 
      * 			content being returned to the client; sets
@@ -276,6 +368,23 @@ public interface ServletResponse {
     public void setContentLength(int len);
     
     
+=======
+     * @param len an integer specifying the length of the 
+     * content being returned to the client; sets the Content-Length header
+     */
+    public void setContentLength(int len);
+    
+    /**
+     * Sets the length of the content body in the response
+     * In HTTP servlets, this method sets the HTTP Content-Length header.
+     *
+     * @param len a long specifying the length of the 
+     * content being returned to the client; sets the Content-Length header
+     *
+     * @since Servlet 3.1
+     */
+    public void setContentLengthLong(long len);
+>>>>>>> bb70d17 ( v2)
 
     /**
      * Sets the content type of the response being sent to
@@ -296,6 +405,7 @@ public interface ServletResponse {
      * the protocol provides a way for doing so. In the case of HTTP,
      * the <code>Content-Type</code> header is used.
      *
+<<<<<<< HEAD
      * @param type 	a <code>String</code> specifying the MIME 
      *			type of the content
      *
@@ -303,6 +413,15 @@ public interface ServletResponse {
      * @see 		#setCharacterEncoding
      * @see 		#getOutputStream
      * @see 		#getWriter
+=======
+     * @param type a <code>String</code> specifying the MIME 
+     * type of the content
+     *
+     * @see #setLocale
+     * @see #setCharacterEncoding
+     * @see #getOutputStream
+     * @see #getWriter
+>>>>>>> bb70d17 ( v2)
      *
      */
 
@@ -326,15 +445,23 @@ public interface ServletResponse {
      * been committed, this method throws an 
      * <code>IllegalStateException</code>.
      *
+<<<<<<< HEAD
      * @param size 	the preferred buffer size
      *
      * @exception  IllegalStateException  	if this method is called after
      *						content has been written
+=======
+     * @param size the preferred buffer size
+     *
+     * @exception IllegalStateException if this method is called after
+     * content has been written
+>>>>>>> bb70d17 ( v2)
      *
      * @see 		#getBufferSize
      * @see 		#flushBuffer
      * @see 		#isCommitted
      * @see 		#reset
+<<<<<<< HEAD
      *
      */
 
@@ -342,10 +469,16 @@ public interface ServletResponse {
     
     
 
+=======
+     */
+    public void setBufferSize(int size);
+   
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the actual buffer size used for the response.  If no buffering
      * is used, this method returns 0.
      *
+<<<<<<< HEAD
      * @return	 	the actual buffer size used
      *
      * @see 		#setBufferSize
@@ -359,11 +492,23 @@ public interface ServletResponse {
     
     
 
+=======
+     * @return the actual buffer size used
+     *
+     * @see #setBufferSize
+     * @see #flushBuffer
+     * @see #isCommitted
+     * @see #reset
+     */
+    public int getBufferSize();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Forces any content in the buffer to be written to the client.  A call
      * to this method automatically commits the response, meaning the status 
      * code and headers will be written.
      *
+<<<<<<< HEAD
      * @see 		#setBufferSize
      * @see 		#getBufferSize
      * @see 		#isCommitted
@@ -375,28 +520,49 @@ public interface ServletResponse {
     
     
     
+=======
+     * @see #setBufferSize
+     * @see #getBufferSize
+     * @see #isCommitted
+     * @see #reset
+     *
+     */
+    public void flushBuffer() throws IOException;
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Clears the content of the underlying buffer in the response without
      * clearing headers or status code. If the 
      * response has been committed, this method throws an 
      * <code>IllegalStateException</code>.
      *
+<<<<<<< HEAD
      * @see 		#setBufferSize
      * @see 		#getBufferSize
      * @see 		#isCommitted
      * @see 		#reset
+=======
+     * @see #setBufferSize
+     * @see #getBufferSize
+     * @see #isCommitted
+     * @see #reset
+>>>>>>> bb70d17 ( v2)
      *
      * @since Servlet 2.3
      */
 
     public void resetBuffer();
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns a boolean indicating if the response has been
      * committed.  A committed response has already had its status 
      * code and headers written.
      *
+<<<<<<< HEAD
      * @return		a boolean indicating if the response has been
      *  		committed
      *
@@ -430,6 +596,41 @@ public interface ServletResponse {
     
     
 
+=======
+     * @return  a boolean indicating if the response has been
+     * committed
+     *
+     * @see #setBufferSize
+     * @see #getBufferSize
+     * @see #flushBuffer
+     * @see #reset
+     *
+     */
+    public boolean isCommitted();
+    
+    /**
+     * Clears any data that exists in the buffer as well as the status code,
+     * headers.  The state of calling {@link #getWriter} or
+     * {@link #getOutputStream} is also cleared.  It is legal, for instance,
+     * to call {@link #getWriter}, {@link #reset} and then
+     * {@link #getOutputStream}.  If {@link #getWriter} or
+     * {@link #getOutputStream} have been called before this method,
+     * then the corrresponding returned Writer or OutputStream will be
+     * staled and the behavior of using the stale object is undefined.
+     * If the response has been committed, this method throws an 
+     * <code>IllegalStateException</code>.
+     *
+     * @exception IllegalStateException  if the response has already been
+     * committed
+     *
+     * @see #setBufferSize
+     * @see #getBufferSize
+     * @see #flushBuffer
+     * @see #isCommitted
+     */
+    public void reset();
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Sets the locale of the response, if the response has not been
      * committed yet. It also sets the response's character encoding
@@ -460,6 +661,7 @@ public interface ServletResponse {
      * specify a content type; however, it is still used to encode text
      * written via the servlet response's writer.
      * 
+<<<<<<< HEAD
      * @param loc  the locale of the response
      *
      * @see 		#getLocale
@@ -472,6 +674,16 @@ public interface ServletResponse {
     
     
 
+=======
+     * @param loc the locale of the response
+     *
+     * @see #getLocale
+     * @see #setContentType
+     * @see #setCharacterEncoding
+     */
+    public void setLocale(Locale loc);
+    
+>>>>>>> bb70d17 ( v2)
     /**
      * Returns the locale specified for this response
      * using the {@link #setLocale} method. Calls made to
@@ -479,6 +691,7 @@ public interface ServletResponse {
      * have no effect. If no locale has been specified,
      * the container's default locale is returned.
      * 
+<<<<<<< HEAD
      * @see 		#setLocale
      *
      */
@@ -487,6 +700,12 @@ public interface ServletResponse {
 
 
 
+=======
+     * @see #setLocale
+     */
+    public Locale getLocale();
+
+>>>>>>> bb70d17 ( v2)
 }
 
 

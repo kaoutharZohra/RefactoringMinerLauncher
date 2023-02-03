@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 2008-2010 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 2008-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -110,6 +114,13 @@ public interface AsyncContext {
      * {@link ServletRequest#startAsync(ServletRequest, ServletResponse)}.
      *
      * @return the request that was used to initialize this AsyncContext
+<<<<<<< HEAD
+=======
+     *
+     * @exception IllegalStateException  if {@link #complete} or any of the
+     *                                  {@link #dispatch} methods has been
+     *                                  called in the asynchronous cycle
+>>>>>>> bb70d17 ( v2)
      */
     public ServletRequest getRequest();
 
@@ -120,6 +131,13 @@ public interface AsyncContext {
      * {@link ServletRequest#startAsync(ServletRequest, ServletResponse)}.
      *
      * @return the response that was used to initialize this AsyncContext
+<<<<<<< HEAD
+=======
+     *
+     * @exception IllegalStateException  if {@link #complete} or any of the
+     *                                  {@link #dispatch} methods has been
+     *                                  called in the asynchronous cycle
+>>>>>>> bb70d17 ( v2)
      */
     public ServletResponse getResponse();
 
@@ -165,16 +183,28 @@ public interface AsyncContext {
      * ...
      * ac.dispatch(); // ASYNC dispatch to /url/A
      * 
+<<<<<<< HEAD
      * // FORWARD dispatch to /url/B
      * getRequestDispatcher("/url/B").forward(request,response);
+=======
+     * // REQUEST to /url/A
+     * // FORWARD dispatch to /url/B
+     * request.getRequestDispatcher("/url/B").forward(request,response);
+>>>>>>> bb70d17 ( v2)
      * // Start async operation from within the target of the FORWARD
      * // dispatch
      * ac = request.startAsync();
      * ...
      * ac.dispatch(); // ASYNC dispatch to /url/A
      * 
+<<<<<<< HEAD
      * // FORWARD dispatch to /url/B
      * getRequestDispatcher("/url/B").forward(request,response);
+=======
+     * // REQUEST to /url/A
+     * // FORWARD dispatch to /url/B
+     * request.getRequestDispatcher("/url/B").forward(request,response);
+>>>>>>> bb70d17 ( v2)
      * // Start async operation from within the target of the FORWARD
      * // dispatch
      * ac = request.startAsync(request,response);
@@ -364,12 +394,26 @@ public interface AsyncContext {
      * {@link ServletRequest#startAsync} methods.
      *
      * <p>The given AsyncListener will receive an {@link AsyncEvent} when
+<<<<<<< HEAD
      * the asynchronous cycle completes successfully, times out, or results
      * in an error.
+=======
+     * the asynchronous cycle completes successfully, times out, results
+     * in an error, or a new asynchronous cycle is being initiated via
+     * one of the {@link ServletRequest#startAsync} methods.
+>>>>>>> bb70d17 ( v2)
      *
      * <p>AsyncListener instances will be notified in the order in which
      * they were added.
      *
+<<<<<<< HEAD
+=======
+     * <p>If {@link ServletRequest#startAsync(ServletRequest, ServletResponse)}
+     * or {@link ServletRequest#startAsync} is called,
+     * the exact same request and response objects are available from the
+     * {@link AsyncEvent} when the {@link AsyncListener} is notified.
+     *
+>>>>>>> bb70d17 ( v2)
      * @param listener the AsyncListener to be registered
      * 
      * @throws IllegalStateException if this method is called after
@@ -386,8 +430,14 @@ public interface AsyncContext {
      * {@link ServletRequest#startAsync} methods.
      *
      * <p>The given AsyncListener will receive an {@link AsyncEvent} when
+<<<<<<< HEAD
      * the asynchronous cycle completes successfully, times out, or results
      * in an error.
+=======
+     * the asynchronous cycle completes successfully, times out, results
+     * in an error, or a new asynchronous cycle is being initiated via
+     * one of the {@link ServletRequest#startAsync} methods.
+>>>>>>> bb70d17 ( v2)
      *
      * <p>AsyncListener instances will be notified in the order in which
      * they were added.
@@ -462,6 +512,11 @@ public interface AsyncContext {
      * default timeout, which is available via a call to
      * {@link #getTimeout}, will apply.
      *
+<<<<<<< HEAD
+=======
+     * <p>The default value is <code>30000</code> ms.
+     *
+>>>>>>> bb70d17 ( v2)
      * @param timeout the timeout in milliseconds
      *
      * @throws IllegalStateException if this method is called after

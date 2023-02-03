@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2012 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -81,7 +85,11 @@ import java.util.ResourceBundle;
  *
  */
 
+<<<<<<< HEAD
 public abstract class ServletOutputStream extends OutputStream {
+=======
+public abstract class ServletOutputStream extends OutputStream  {
+>>>>>>> bb70d17 ( v2)
 
     private static final String LSTRING_FILE = "javax.servlet.LocalStrings";
     private static ResourceBundle lStrings =
@@ -402,4 +410,38 @@ public abstract class ServletOutputStream extends OutputStream {
         print(d);
         println();
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * This method can be used to determine if data can be written without blocking.
+     *
+     * @return <code>true</code> if a write to this <code>ServletOutputStream</code>
+     *  will succeed, otherwise returns <code>false</code>.
+     *
+     *  @since Servlet 3.1
+     */
+    public abstract boolean isReady();
+
+    /**
+     * Instructs the <code>ServletOutputStream</code> to invoke the provided
+     * {@link WriteListener} when it is possible to write
+     *
+     *
+     * @param writeListener the {@link WriteListener} that should be notified
+     *  when it's possible to write
+     *
+     * @exception IllegalStateException if one of the following conditions is true
+     * <ul>
+     * <li>the associated request is neither upgraded nor the async started
+     * <li>setWriteListener is called more than once within the scope of the same request.
+     * </ul>
+     *
+     * @throws NullPointerException if writeListener is null
+     *
+     * @since Servlet 3.1
+     */
+    public abstract void setWriteListener(WriteListener writeListener);
+
+>>>>>>> bb70d17 ( v2)
 }

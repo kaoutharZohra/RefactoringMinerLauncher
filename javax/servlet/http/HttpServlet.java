@@ -1,7 +1,11 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+<<<<<<< HEAD
  * Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
+=======
+ * Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
+>>>>>>> bb70d17 ( v2)
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -68,11 +72,15 @@ import java.util.Enumeration;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+<<<<<<< HEAD
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+=======
+import javax.servlet.*;
+>>>>>>> bb70d17 ( v2)
 
 
 /**
@@ -467,6 +475,7 @@ public abstract class HttpServlet extends GenericServlet
     }
     
 
+<<<<<<< HEAD
     private Method[] getAllDeclaredMethods(Class<?> c) {
 
         if (c.equals(javax.servlet.http.HttpServlet.class)) {
@@ -488,6 +497,31 @@ public abstract class HttpServlet extends GenericServlet
         }
 
         return thisMethods;
+=======
+    private Method[] getAllDeclaredMethods(Class<? extends HttpServlet> c) {
+
+        Class<?> clazz = c;
+        Method[] allMethods = null;
+
+        while (!clazz.equals(HttpServlet.class)) {
+            Method[] thisMethods = clazz.getDeclaredMethods();
+            if (allMethods != null && allMethods.length > 0) {
+                Method[] subClassMethods = allMethods;
+                allMethods =
+                    new Method[thisMethods.length + subClassMethods.length];
+                System.arraycopy(thisMethods, 0, allMethods, 0,
+                                 thisMethods.length);
+                System.arraycopy(subClassMethods, 0, allMethods, thisMethods.length,
+                                 subClassMethods.length);
+            } else {
+                allMethods = thisMethods;
+            }
+
+            clazz = clazz.getSuperclass();
+        }
+
+        return ((allMethods != null) ? allMethods : new Method[0]);
+>>>>>>> bb70d17 ( v2)
     }
 
 
@@ -536,6 +570,7 @@ public abstract class HttpServlet extends GenericServlet
         boolean ALLOW_OPTIONS = true;
         
         for (int i=0; i<methods.length; i++) {
+<<<<<<< HEAD
             Method m = methods[i];
             
             if (m.getName().equals("doGet")) {
@@ -574,6 +609,67 @@ public abstract class HttpServlet extends GenericServlet
             else allow += ", " + METHOD_OPTIONS;
         
         resp.setHeader("Allow", allow);
+=======
+            String methodName = methods[i].getName();
+            
+            if (methodName.equals("doGet")) {
+                ALLOW_GET = true;
+                ALLOW_HEAD = true;
+            } else if (methodName.equals("doPost")) {
+                ALLOW_POST = true;
+            } else if (methodName.equals("doPut")) {
+                ALLOW_PUT = true;
+            } else if (methodName.equals("doDelete")) {
+                ALLOW_DELETE = true;
+            }
+            
+        }
+        
+        // we know "allow" is not null as ALLOW_OPTIONS = true
+        // when this method is invoked
+        StringBuilder allow = new StringBuilder();
+        if (ALLOW_GET) {
+            allow.append(METHOD_GET);
+        }
+        if (ALLOW_HEAD) {
+            if (allow.length() > 0) {
+                allow.append(", ");
+            }
+            allow.append(METHOD_HEAD);
+        }
+        if (ALLOW_POST) {
+            if (allow.length() > 0) {
+                allow.append(", ");
+            }
+            allow.append(METHOD_POST);
+        }
+        if (ALLOW_PUT) {
+            if (allow.length() > 0) {
+                allow.append(", ");
+            }
+            allow.append(METHOD_PUT);
+        }
+        if (ALLOW_DELETE) {
+            if (allow.length() > 0) {
+                allow.append(", ");
+            }
+            allow.append(METHOD_DELETE);
+        }
+        if (ALLOW_TRACE) {
+            if (allow.length() > 0) {
+                allow.append(", ");
+            }
+            allow.append(METHOD_TRACE);
+        }
+        if (ALLOW_OPTIONS) {
+            if (allow.length() > 0) {
+                allow.append(", ");
+            }
+            allow.append(METHOD_OPTIONS);
+        }
+        
+        resp.setHeader("Allow", allow.toString());
+>>>>>>> bb70d17 ( v2)
     }
     
     
@@ -753,6 +849,10 @@ public abstract class HttpServlet extends GenericServlet
      * 
      * @see javax.servlet.Servlet#service
      */
+<<<<<<< HEAD
+=======
+    @Override
+>>>>>>> bb70d17 ( v2)
     public void service(ServletRequest req, ServletResponse res)
         throws ServletException, IOException
     {
@@ -805,11 +905,55 @@ class NoBodyResponse extends HttpServletResponseWrapper {
         }
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+>>>>>>> bb70d17 ( v2)
     public void setContentLength(int len) {
         super.setContentLength(len);
         didSetContentLength = true;
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    public void setContentLengthLong(long len) {
+        super.setContentLengthLong(len);
+        didSetContentLength = true;
+    }
+
+    @Override
+    public void setHeader(String name, String value) {
+        super.setHeader(name, value);
+        checkHeader(name);
+    }
+
+    @Override
+    public void addHeader(String name, String value) {
+        super.addHeader(name, value);
+        checkHeader(name);
+    }
+
+    @Override
+    public void setIntHeader(String name, int value) {
+        super.setIntHeader(name, value);
+        checkHeader(name);
+    }
+
+    @Override
+    public void addIntHeader(String name, int value) {
+        super.addIntHeader(name, value);
+        checkHeader(name);
+    }
+
+    private void checkHeader(String name) {
+        if ("content-length".equalsIgnoreCase(name)) {
+            didSetContentLength = true;
+        }
+    }
+
+    @Override
+>>>>>>> bb70d17 ( v2)
     public ServletOutputStream getOutputStream() throws IOException {
 
         if (writer != null) {
@@ -821,6 +965,10 @@ class NoBodyResponse extends HttpServletResponseWrapper {
         return noBody;
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+>>>>>>> bb70d17 ( v2)
     public PrintWriter getWriter() throws UnsupportedEncodingException {
 
         if (usingOutputStream) {
@@ -860,10 +1008,15 @@ class NoBodyOutputStream extends ServletOutputStream {
         return contentLength;
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+>>>>>>> bb70d17 ( v2)
     public void write(int b) {
         contentLength++;
     }
 
+<<<<<<< HEAD
     public void write(byte buf[], int offset, int len)
         throws IOException
     {
@@ -874,5 +1027,36 @@ class NoBodyOutputStream extends ServletOutputStream {
             // changing this would break backwards compatibility
             throw new IOException(lStrings.getString("err.io.negativelength"));
         }
+=======
+    @Override
+    public void write(byte buf[], int offset, int len)
+        throws IOException
+    {
+        if (buf == null) {
+            throw new NullPointerException(
+                    lStrings.getString("err.io.nullArray"));
+        }
+
+        if (offset < 0 || len < 0 || offset+len > buf.length) {
+            String msg = lStrings.getString("err.io.indexOutOfBounds");
+            Object[] msgArgs = new Object[3];
+            msgArgs[0] = Integer.valueOf(offset);
+            msgArgs[1] = Integer.valueOf(len);
+            msgArgs[2] = Integer.valueOf(buf.length);
+            msg = MessageFormat.format(msg, msgArgs);
+            throw new IndexOutOfBoundsException(msg);
+        }
+
+        contentLength += len;
+    }
+
+
+    public boolean isReady() {
+        return false;
+    }
+
+    public void setWriteListener(WriteListener writeListener) {
+
+>>>>>>> bb70d17 ( v2)
     }
 }
